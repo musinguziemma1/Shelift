@@ -57,8 +57,8 @@ export const gallery = {
     {
       image: images.story01,
       span: "col-span-2 row-span-2",
-      label: "Health & Well-Being",
-      caption: "Accessible, respectful care — delivered where communities live.",
+      label: "Community",
+      caption: "Change grows when people move together.",
     },
     {
       image: images.story02,
@@ -70,23 +70,23 @@ export const gallery = {
       image: images.story03,
       span: "",
       label: "Livelihoods",
-      caption: "Independence built through enterprise.",
+      caption: "Independence built through digital skill and enterprise.",
     },
     {
       image: images.story04,
       span: "col-span-2 lg:col-span-1 lg:row-span-2",
-      label: "Leadership",
-      caption: "Voices that shape decisions.",
+      label: "Collaboration",
+      caption: "Women shaping decisions together.",
     },
     {
       image: images.story05,
       span: "col-span-2",
-      label: "Community",
-      caption: "Change grows when people move together.",
+      label: "Community & Culture",
+      caption: "Joy and solidarity within communities.",
     },
   ] as const,
   note:
-    "Imagery shown is representative placeholder photography — real SHELIFT field photography will replace these via the central image configuration.",
+    "Photography on this page is from Unsplash and is representative — real SHELIFT field photography will replace it via the central image configuration when available.",
 } as const;
 
 /* ------------------------------------------------------------------ */

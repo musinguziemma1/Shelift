@@ -34,7 +34,7 @@ export function Leadership() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <SmartImage
                 src={leadership.founder.image}
-                alt={`Portrait of ${leadership.founder.name}, founder of SHELIFT`}
+                alt="Representative portrait — official founder photography of Dorah Nagawa to be added"
                 className="h-full w-full object-cover"
               />
             </div>

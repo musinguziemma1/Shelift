@@ -16,7 +16,7 @@ export function About() {
           />
           <SmartImage
             src={about.image}
-            alt="Adolescent girls and women — the people at the centre of SHELIFT's work"
+            alt="A Ugandan woman in a floral dress — representative photography of the women SHELIFT serves"
             className="relative aspect-[4/5] w-full rounded-md object-cover"
           />
           <div className="absolute bottom-5 left-5 max-w-[75%] rounded-md bg-forest-950/85 px-5 py-4 backdrop-blur-sm">

@@ -28,8 +28,15 @@ npm install          # install dependencies
 npm run dev          # local dev server
 npm run build        # type-check + production build (dist/)
 npm run preview      # preview the production build
-npm run generate:placeholders   # (re)generate placeholder imagery
+npm run generate:placeholders   # (re)generate brand-palette placeholder art
+npm run fetch:photos            # fetch+optimize the Unsplash photo set (18 images)
 ```
+
+> **Imagery:** the site currently uses **real photography from Unsplash**
+> (see `images-credits.md`), downloaded and optimized via `npm run fetch:photos`.
+> These are representative photos — not SHELIFT field photography. Replace them
+> with official photos by dropping files into `public/images/` under the same
+> filenames.
 
 ## Project structure
 
@@ -40,7 +47,8 @@ shelift/
 │   ├── images/                    # all imagery (swap in real photos here)
 │   └── favicon.svg, robots.txt, site.webmanifest
 ├── scripts/
-│   └── generate-placeholders.mjs  # renders brand-palette placeholders w/ sharp
+│   ├── generate-placeholders.mjs  # renders brand-palette placeholders w/ sharp
+│   └── fetch-unsplash.mjs         # downloads + optimizes the Unsplash photo set
 └── src/
     ├── main.tsx
     ├── App.tsx                    # page composition + code-splitting

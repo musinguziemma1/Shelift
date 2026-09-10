@@ -49,7 +49,7 @@ export const heroSlides: readonly HeroSlide[] = [
   {
     id: "intro",
     image: images.hero,
-    alt: "Women and girls in a Ugandan community, moving from barriers toward opportunity",
+    alt: "Three women in a Ugandan community carrying a basin together",
     eyebrow: "SHELIFT • 2025—2027",
     headline: [
       "Empowering women and girls",
@@ -62,7 +62,7 @@ export const heroSlides: readonly HeroSlide[] = [
   {
     id: "health",
     image: images.hero02,
-    alt: "A mother and child in a community health setting in Uganda",
+    alt: "A mother holding her baby in a healthcare setting",
     eyebrow: "Health & Well-Being",
     headline: [
       "Care that reaches women and girls",
@@ -74,7 +74,7 @@ export const heroSlides: readonly HeroSlide[] = [
   {
     id: "education",
     image: images.hero03,
-    alt: "A young woman in Uganda building skills through learning",
+    alt: "A woman teacher surrounded by school children",
     eyebrow: "Education & Skills",
     headline: [
       "Learning that opens doors",
@@ -86,7 +86,7 @@ export const heroSlides: readonly HeroSlide[] = [
   {
     id: "livelihoods",
     image: images.hero04,
-    alt: "A woman entrepreneur running her business in Uganda",
+    alt: "A woman smiling while working on her laptop",
     eyebrow: "Livelihoods & Entrepreneurship",
     headline: [
       "Dignified work that sustains",
@@ -98,7 +98,7 @@ export const heroSlides: readonly HeroSlide[] = [
   {
     id: "leadership",
     image: images.hero05,
-    alt: "Women in Uganda gathering for community leadership",
+    alt: "A confident professional woman in an orange blazer",
     eyebrow: "Rights, Leadership & Gender Equity",
     headline: [
       "Stronger voices for",

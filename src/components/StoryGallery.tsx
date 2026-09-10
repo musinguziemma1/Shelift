@@ -20,7 +20,7 @@ export function StoryGallery() {
               <figure className="group relative h-full overflow-hidden rounded-sm">
                 <SmartImage
                   src={tile.image}
-                  alt={`${tile.label} — representative SHELIFT imagery`}
+                  alt={`${tile.label} — representative Unsplash photography`}
                   className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
                 />
                 <div
