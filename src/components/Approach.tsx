@@ -1,12 +1,38 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { Handshake, Lightbulb, Scale, ShieldCheck, Users } from "lucide-react";
 import { approach } from "../data/storytelling";
-import { EASE, viewportOnce } from "../lib/motion";
-import { Reveal } from "./ui/Reveal";
+import { fadeUpItem, staggerContainer, viewportOnce } from "../lib/motion";
 import { SectionHeading } from "./ui/SectionHeading";
+
+const principleDetails = [
+  {
+    icon: Users,
+    text: "Priorities are set with — never for — girls, women, households, and local leaders.",
+  },
+  {
+    icon: ShieldCheck,
+    text: "Clear targets, open books, and honest reporting to communities and partners.",
+  },
+  {
+    icon: Lightbulb,
+    text: "Practical, low-cost approaches that evolve with what the evidence shows works.",
+  },
+  {
+    icon: Handshake,
+    text: "Government, communities, NGOs, and the private sector moving together.",
+  },
+  {
+    icon: Scale,
+    text: "Those furthest from opportunity come first — no one left at the margins.",
+  },
+] as const;
 
 export function Approach() {
   const steps = approach.steps;
+  const principles = approach.values.map((value, i) => ({
+    value,
+    ...principleDetails[i],
+  }));
 
   return (
     <section id="approach" className="bg-ivory py-20 lg:py-28">
@@ -14,58 +40,108 @@ export function Approach() {
         <SectionHeading eyebrow={approach.eyebrow} title={approach.headline} lead={approach.lead} />
 
         {/* LISTEN → EQUIP → CONNECT → TRANSFORM */}
-        <div className="relative mt-16">
-          {/* Base channel */}
-          <div
-            aria-hidden="true"
-            className="absolute left-0 right-0 top-7 hidden h-px bg-forest-900/10 lg:block"
-          />
-          {/* Animated flow */}
-          <motion.div
-            aria-hidden="true"
-            className="absolute left-0 top-7 hidden h-px origin-left bg-gold-500 lg:block"
-            initial={{ scaleX: 0 }}
-            whileInView={{ scaleX: 1 }}
-            viewport={viewportOnce}
-            transition={{ duration: 1.6, ease: EASE }}
-          />
-
-          <div className="grid gap-10 lg:grid-cols-4 lg:gap-6">
-            {steps.map((step, i) => (
-              <Reveal key={step.number} delay={i * 0.12} className="relative">
-                <span className="relative z-10 grid h-14 w-14 place-items-center rounded-full border border-forest-900/15 bg-ivory font-display text-lg text-clay-600 shadow-[0_2px_0_0_rgba(185,138,51,0.35)]">
+        <motion.ol
+          variants={staggerContainer}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+          className="relative mt-14 grid gap-5 sm:grid-cols-2 lg:mt-16 lg:grid-cols-4 lg:gap-6"
+        >
+          {steps.map((step, i) => (
+            <motion.li
+              key={step.number}
+              variants={fadeUpItem}
+              className="group relative flex flex-col overflow-hidden rounded-2xl border border-forest-900/10 bg-white p-7 shadow-[0_1px_2px_rgba(11,26,18,0.05)] transition-all duration-500 hover:-translate-y-1.5 hover:border-clay-500/30 hover:shadow-[0_20px_45px_-20px_rgba(168,76,40,0.35)]"
+            >
+              <span
+                aria-hidden="true"
+                className="absolute inset-x-0 top-0 h-1 origin-left scale-x-0 bg-gradient-to-r from-clay-500 via-clay-400 to-gold-400 transition-transform duration-500 ease-out group-hover:scale-x-100"
+              />
+              <div className="flex items-start justify-between gap-3">
+                <span className="grid h-12 w-12 place-items-center rounded-full bg-forest-950 font-display text-base text-gold-300 ring-4 ring-forest-950/5 transition-transform duration-500 group-hover:scale-105">
                   {step.number}
                 </span>
-                {i < steps.length - 1 && (
-                  <ArrowRight
-                    aria-hidden="true"
-                    className="absolute -right-5 top-4 hidden w-5 text-gold-500/80 lg:block"
-                  />
+                <span
+                  aria-hidden="true"
+                  className="eyebrow text-forest-900/30"
+                >
+                  Step {i + 1} / {steps.length}
+                </span>
+              </div>
+              <h3 className="mt-6 font-display text-[1.65rem] leading-none text-forest-950">
+                {step.label}
+              </h3>
+              <p className="mt-3 flex-1 text-sm leading-relaxed text-charcoal/70">{step.text}</p>
+              <span
+                aria-hidden="true"
+                className="mt-6 flex items-center gap-2 text-[0.7rem] font-extrabold uppercase tracking-[0.2em] text-clay-600"
+              >
+                {i < steps.length - 1 ? (
+                  <>
+                    <span className="h-px w-8 bg-clay-500/50 transition-all duration-500 group-hover:w-12 group-hover:bg-clay-500" />
+                    Next
+                  </>
+                ) : (
+                  <>
+                    <span className="h-1.5 w-1.5 rounded-full bg-gold-500" />
+                    Lasting change
+                  </>
                 )}
-                <h3 className="mt-5 font-display text-2xl text-forest-950">{step.label}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-charcoal/70">{step.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+              </span>
+            </motion.li>
+          ))}
+        </motion.ol>
 
-        {/* Values as a flowing pathway */}
-        <Reveal className="mt-20 border-t border-forest-900/10 pt-10">
-          <p className="eyebrow text-clay-600">Guiding principles in practice</p>
-          <ul className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-3">
-            {approach.values.map((value, i) => (
-              <li key={value} className="group flex items-center gap-3">
-                <span className="text-sm font-bold tracking-wide text-forest-800">{value}</span>
-                {i < approach.values.length - 1 && (
-                  <span
-                    aria-hidden="true"
-                    className="h-1.5 w-1.5 rounded-full bg-gold-500 transition-transform duration-300 group-hover:scale-125"
-                  />
-                )}
-              </li>
+        {/* Guiding principles in practice — five premium cards */}
+        <div className="relative mt-16 overflow-hidden rounded-3xl bg-forest-950 p-8 sm:p-10 lg:mt-20 lg:p-14">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-32 right-0 h-72 w-72 rounded-full bg-forest-700/50 blur-[100px]" />
+            <div className="absolute -bottom-36 -left-16 h-72 w-72 rounded-full bg-clay-700/25 blur-[100px]" />
+            <div className="absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/60 to-transparent sm:inset-x-14" />
+          </div>
+
+          <div className="relative flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="eyebrow text-gold-400">Guiding principles in practice</p>
+              <h3 className="mt-3 max-w-xl font-display text-3xl leading-tight text-ivory sm:text-4xl">
+                Five commitments shape every programme we run.
+              </h3>
+            </div>
+            <p className="max-w-sm text-sm leading-relaxed text-forest-100/75">
+              From the Strategic Plan 2025–2027 — the standards our teams, partners, and communities hold us to.
+            </p>
+          </div>
+
+          <motion.ul
+            variants={staggerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={viewportOnce}
+            className="relative mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 lg:gap-5 xl:grid-cols-5"
+          >
+            {principles.map((principle) => (
+              <motion.li
+                key={principle.value}
+                variants={fadeUpItem}
+                className="group relative flex flex-col overflow-hidden rounded-2xl border border-ivory/12 bg-white/[0.05] p-6 backdrop-blur-sm transition-colors duration-500 hover:border-gold-400/45 hover:bg-white/[0.08]"
+              >
+                <span
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-[2px] origin-left scale-x-0 bg-gradient-to-r from-gold-400 to-clay-400 transition-transform duration-500 ease-out group-hover:scale-x-100"
+                />
+                <span className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-gold-400/30 bg-gold-400/10 text-gold-300 transition-transform duration-500 group-hover:scale-110">
+                  <principle.icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <h4 className="mt-5 font-display text-xl leading-snug text-ivory">
+                  {principle.value}
+                </h4>
+                <p className="mt-2.5 flex-1 text-[0.83rem] leading-relaxed text-forest-100/70">
+                  {principle.text}
+                </p>
+              </motion.li>
             ))}
-          </ul>
-        </Reveal>
+          </motion.ul>
+        </div>
       </div>
     </section>
   );
