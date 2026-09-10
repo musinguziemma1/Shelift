@@ -101,6 +101,38 @@
     }
   }
 
+  /* Infinite logo marquee */
+  @keyframes shelift-marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marquee-track {
+    animation: shelift-marquee 38s linear infinite;
+    will-change: transform;
+  }
+
+  .marquee-track-fast {
+    animation-duration: 30s;
+  }
+
+  .marquee-reverse {
+    animation-direction: reverse;
+  }
+
+  .marquee:hover .marquee-track,
+  .marquee:focus-within .marquee-track,
+  .marquee-track.is-paused {
+    animation-play-state: paused;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-track {
+      animation: none;
+    }
+  }
+
   .skip-link {
     @apply absolute left-4 top-4 z-[100] -translate-y-24 rounded-full bg-forest-950 px-4 py-2 text-sm font-bold text-ivory shadow-lg transition-transform duration-200;
   }
