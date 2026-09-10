@@ -56,31 +56,31 @@ export const gallery = {
   tiles: [
     {
       image: images.story01,
-      span: "col-span-2 row-span-2",
+      span: "lg:col-span-7 lg:row-span-2",
       label: "Community",
       caption: "Change grows when people move together.",
     },
     {
       image: images.story02,
-      span: "",
+      span: "lg:col-span-5",
       label: "Education & Skills",
       caption: "Learning that opens new futures.",
     },
     {
       image: images.story03,
-      span: "",
+      span: "lg:col-span-5",
       label: "Livelihoods",
       caption: "Independence built through digital skill and enterprise.",
     },
     {
       image: images.story04,
-      span: "col-span-2 lg:col-span-1 lg:row-span-2",
+      span: "lg:col-span-5 lg:row-span-2",
       label: "Collaboration",
       caption: "Women shaping decisions together.",
     },
     {
       image: images.story05,
-      span: "col-span-2",
+      span: "lg:col-span-7 lg:row-span-2",
       label: "Community & Culture",
       caption: "Joy and solidarity within communities.",
     },
