@@ -144,25 +144,32 @@ export function Contact() {
                 </a>
               </div>
 
-              {/* Map placeholder */}
-              <div className="relative mt-6 flex-1">
-                <div className="relative flex h-full min-h-44 items-center justify-center overflow-hidden rounded-xl border border-ivory/12 bg-white/[0.04]">
-                  <span className="sr-only">Map placeholder</span>
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(250,248,241,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(250,248,241,0.07)_1px,transparent_1px)] [background-size:28px_28px]"
+              {/* Live map - SHELIFT Headquarters, Plot 12 Jinja Road, Nakawa, Kampala */}
+              <figure className="relative mt-6 flex-1 overflow-hidden rounded-xl border border-ivory/12 bg-white/[0.04]">
+                <div className="relative h-full min-h-64 w-full">
+                  <iframe
+                    title="Map showing SHELIFT Headquarters - Plot 12, Jinja Road, Nakawa Division, Kampala, Uganda"
+                    src="https://www.google.com/maps?q=Plot%2012%20Jinja%20Road%20Nakawa%20Division%20Kampala%20Uganda&output=embed"
+                    className="absolute inset-0 h-full w-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    allowFullScreen
                   />
-                  <span
-                    aria-hidden="true"
-                    className="relative grid h-12 w-12 place-items-center rounded-full bg-clay-500 text-ivory shadow-[0_12px_30px_-10px_rgba(192,95,53,0.9)]"
-                  >
-                    <MapPin className="h-5 w-5 animate-pulse" />
-                  </span>
-                  <p className="absolute bottom-3 text-xs font-semibold tracking-wide text-forest-100/60">
-                    Kampala, Uganda — map to be embedded
-                  </p>
                 </div>
-              </div>
+                <figcaption className="flex flex-wrap items-center justify-between gap-2 border-t border-ivory/10 px-4 py-3">
+                  <span className="text-xs font-semibold tracking-wide text-forest-100/70">
+                    Plot 12, Jinja Road - Nakawa Division, Kampala, Uganda
+                  </span>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Plot+12+Jinja+Road+Nakawa+Division+Kampala+Uganda"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="link-underline shrink-0 text-xs font-bold text-gold-300 transition-colors hover:text-gold-400"
+                  >
+                    Open in Maps
+                  </a>
+                </figcaption>
+              </figure>
             </div>
           </Reveal>
 

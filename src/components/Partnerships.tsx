@@ -43,28 +43,21 @@ export function Partnerships() {
         </Reveal>
       </div>
 
-      {/* Sliding logo wall */}
+      {/* Sliding logo wall — logos only */}
       <Reveal delay={0.15} className="mt-12">
         <div
           className="marquee relative"
           role="region"
-          aria-label="Partner categories logo wall (placeholders)"
+          aria-label="Partner logo wall (placeholders)"
         >
           {/* Edge fades */}
           <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-ivory to-transparent sm:w-24" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-ivory to-transparent sm:w-24" />
 
-          <div className="overflow-hidden">
-            <div className={`marquee-track flex w-max ${pausedClass}`}>
+          <div className="overflow-hidden py-2">
+            <div className={`marquee-track flex w-max items-center ${pausedClass}`}>
               <LogoHalf ariaHidden={false} />
               <LogoHalf ariaHidden />
-            </div>
-          </div>
-
-          <div className="mt-5 overflow-hidden">
-            <div className={`marquee-track marquee-track-fast marquee-reverse flex w-max ${pausedClass}`}>
-              <LogoHalf ariaHidden={false} flip />
-              <LogoHalf ariaHidden flip />
             </div>
           </div>
         </div>
@@ -98,27 +91,29 @@ export function Partnerships() {
   );
 }
 
-function LogoHalf({ ariaHidden, flip = false }: { ariaHidden?: boolean; flip?: boolean }) {
-  const order = flip ? [...partnerships.categories].reverse() : partnerships.categories;
+/**
+ * One half of the seamless marquee loop. Each tile is a logo emblem only —
+ * the category name survives solely as an accessible label.
+ */
+function LogoHalf({ ariaHidden }: { ariaHidden?: boolean }) {
   return (
-    <div aria-hidden={ariaHidden || undefined} className="flex shrink-0 items-stretch gap-5 pr-5">
-      {order.map((category, i) => {
-        const Icon = categoryIcons[(flip ? order.length - 1 - i : i) % categoryIcons.length];
+    <div aria-hidden={ariaHidden || undefined} className="flex shrink-0 items-center gap-5 pr-5">
+      {partnerships.categories.map((category, i) => {
+        const Icon = categoryIcons[i % categoryIcons.length];
         return (
           <div
-            key={`${category}-${flip ? "b" : "a"}`}
-            className="group flex w-60 shrink-0 flex-col justify-between rounded-2xl border border-forest-900/10 bg-white p-5 text-left shadow-[0_14px_30px_-22px_rgba(11,26,18,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-gold-500/50 hover:shadow-[0_22px_40px_-22px_rgba(185,138,51,0.45)] sm:w-72"
+            key={category}
+            title={category}
+            className="group grid h-28 w-44 shrink-0 place-items-center rounded-2xl border border-forest-900/10 bg-white shadow-[0_14px_30px_-22px_rgba(11,26,18,0.4)] transition-all duration-300 hover:-translate-y-1 hover:border-gold-500/50 hover:shadow-[0_22px_40px_-22px_rgba(185,138,51,0.45)] sm:h-32 sm:w-52"
           >
-            <div className="flex items-center gap-3">
-              <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest-950 text-gold-300 transition-colors duration-300 group-hover:bg-clay-500 group-hover:text-ivory">
-                <Icon aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
-              </span>
-              <span className="text-[0.6rem] font-extrabold uppercase tracking-[0.28em] text-forest-800/45">
-                Partner logo
-              </span>
-            </div>
-            <p className="mt-5 font-display text-lg leading-snug text-forest-950">{category}</p>
-            <p className="mt-1 text-xs text-charcoal/50">Awaiting approved artwork</p>
+            <span className="sr-only">{category} — partner logo placeholder</span>
+            <span
+              aria-hidden="true"
+              className="inline-flex items-center gap-2 text-forest-900/55 transition-colors duration-300 group-hover:text-clay-600"
+            >
+              <Icon className="h-7 w-7 sm:h-8 sm:w-8" strokeWidth={1.5} />
+              <span className="font-display text-lg italic sm:text-xl">Logo</span>
+            </span>
           </div>
         );
       })}
