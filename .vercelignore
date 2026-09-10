@@ -1,0 +1,13 @@
+# Dependencies
+node_modules
+npm-debug.log*
+
+# Build output — Vercel builds fresh from `npm run build`
+dist
+dist-ssr
+
+# Local / editor files
+*.local
+.vscode/*
+.idea
+.DS_Store
