@@ -1,0 +1,17 @@
+{
+  "name": "SHELIFT — Sustainable Health, Education, and Livelihood Initiative for Transformation",
+  "short_name": "SHELIFT",
+  "description": "Empowering adolescent girls, women, and households in Uganda through health, education, livelihoods, and gender equity.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f1",
+  "theme_color": "#12291e",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
