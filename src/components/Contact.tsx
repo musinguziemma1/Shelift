@@ -1,7 +1,6 @@
-import { Info } from "lucide-react";
+import { AlertCircle, ChevronDown, Info, Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
 import { useState, type FormEvent } from "react";
 import { contact } from "../data/engage";
-import { ButtonLink } from "./ui/ButtonLink";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 
@@ -24,7 +23,7 @@ const initialValues: FormValues = {
 };
 
 const inputClasses =
-  "w-full rounded-sm border border-forest-900/15 bg-ivory px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/35 transition-colors focus:border-clay-500 focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-500";
+  "w-full rounded-xl border border-forest-900/15 bg-ivory px-4 py-3 text-sm text-charcoal placeholder:text-charcoal/35 transition-all focus:border-clay-500 focus:bg-white focus:outline-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-clay-500";
 
 export function Contact() {
   const [values, setValues] = useState<FormValues>(initialValues);
@@ -72,67 +71,104 @@ export function Contact() {
 
   return (
     <section id="contact" className="bg-ivory py-20 lg:py-28">
-      <div className="container-x grid gap-14 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-20">
-        {/* Contact information */}
-        <div>
-          <SectionHeading eyebrow={contact.eyebrow} title={contact.headline} />
-          <Reveal delay={0.1} className="mt-6 space-y-8">
-            <p className="text-base leading-relaxed text-charcoal/70">
-              Whether you're a partner, a supporter, or simply curious about our
-              work — we'd love to hear from you.
+      <div className="container-x">
+        {/* Editorial header: heading left, invitation right */}
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
+          <div className="lg:col-span-7">
+            <SectionHeading eyebrow={contact.eyebrow} title={contact.headline} />
+          </div>
+          <Reveal delay={0.1} className="lg:col-span-5">
+            <p className="max-w-md text-base leading-relaxed text-charcoal/70 lg:ml-auto">
+              Whether you're a partner, a supporter, or simply curious about our work — we'd love
+              to hear from you.
             </p>
-
-            <address className="not-italic">
-              <p className="eyebrow text-clay-600">SHELIFT Headquarters</p>
-              <p className="mt-3 text-base leading-relaxed text-charcoal/75">
-                {contact.address.line1}
-                <br />
-                {contact.address.line2}
-                <br />
-                {contact.address.city}
-              </p>
-            </address>
-
-            <div className="flex flex-wrap gap-4">
-              <ButtonLink href={`mailto:${contact.email}`} variant="primary" withArrow>
-                Email Us
-              </ButtonLink>
-              <ButtonLink href={`tel:${contact.phoneHref}`} variant="outline-dark">
-                {contact.phone}
-              </ButtonLink>
-            </div>
-          </Reveal>
-
-          {/* Map placeholder */}
-          <Reveal delay={0.2} className="mt-10">
-            <div className="relative flex aspect-[16/9] items-center justify-center rounded-sm border border-dashed border-forest-900/25 bg-sand-50">
-              <span className="sr-only">Map placeholder</span>
-              <span
-                aria-hidden="true"
-                className="grid h-12 w-12 place-items-center rounded-full bg-clay-500/90 text-ivory shadow-lg"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="h-5 w-5 animate-pulse"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                  <circle cx="12" cy="10" r="3" />
-                </svg>
-              </span>
-              <p className="absolute bottom-3 text-xs font-semibold tracking-wide text-charcoal/55">
-                Kampala, Uganda — map to be embedded
-              </p>
-            </div>
           </Reveal>
         </div>
-        {/* Contact form */}
-        <Reveal delay={0.15} className="mt-2">
-          <div className="rounded-sm border border-forest-900/10 bg-sand-50 p-6 sm:p-8 lg:p-10">
+
+        <div className="mt-12 grid gap-6 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)] lg:gap-8">
+          {/* Contact information — dark card */}
+          <Reveal className="h-full">
+            <div className="relative flex h-full flex-col overflow-hidden rounded-2xl bg-forest-950 p-7 sm:p-8">
+              {/* Ambient decoration */}
+              <div aria-hidden="true" className="pointer-events-none absolute inset-0">
+                <div className="absolute -right-20 -top-20 h-56 w-56 rounded-full bg-forest-700/60 blur-[90px]" />
+                <div className="absolute -bottom-24 -left-16 h-60 w-60 rounded-full bg-clay-700/25 blur-[90px]" />
+                <div className="absolute inset-x-7 top-0 h-px bg-gradient-to-r from-transparent via-gold-400/60 to-transparent" />
+              </div>
+
+              <div className="relative">
+                <p className="eyebrow text-gold-400">SHELIFT Headquarters</p>
+                <address className="mt-4 space-y-3 text-[0.95rem] not-italic leading-relaxed text-forest-100/85">
+                  <p className="flex items-start gap-3">
+                    <MapPin aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-gold-300" strokeWidth={1.75} />
+                    <span>
+                      {contact.address.line1}
+                      <br />
+                      {contact.address.line2}
+                      <br />
+                      {contact.address.city}
+                    </span>
+                  </p>
+                </address>
+              </div>
+
+              <div className="relative mt-6 space-y-3">
+                <a
+                  href={`mailto:${contact.email}`}
+                  className="group flex items-center gap-4 rounded-xl border border-ivory/12 bg-white/[0.05] p-4 backdrop-blur-sm transition-colors duration-300 hover:border-gold-400/40 hover:bg-white/[0.08]"
+                >
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest-950 text-gold-300 ring-1 ring-ivory/15 transition-colors duration-300 group-hover:bg-clay-500 group-hover:text-ivory">
+                    <Mail aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <span className="min-w-0">
+                    <span className="eyebrow text-gold-400">Email</span>
+                    <span className="mt-1 block truncate text-[0.95rem] font-bold text-ivory">
+                      {contact.email}
+                    </span>
+                  </span>
+                </a>
+
+                <a
+                  href={`tel:${contact.phoneHref}`}
+                  className="group flex items-center gap-4 rounded-xl border border-ivory/12 bg-white/[0.05] p-4 backdrop-blur-sm transition-colors duration-300 hover:border-gold-400/40 hover:bg-white/[0.08]"
+                >
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest-950 text-gold-300 ring-1 ring-ivory/15 transition-colors duration-300 group-hover:bg-clay-500 group-hover:text-ivory">
+                    <Phone aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <span>
+                    <span className="eyebrow text-gold-400">Phone</span>
+                    <span className="mt-1 block text-[0.95rem] font-bold text-ivory">
+                      {contact.phone}
+                    </span>
+                  </span>
+                </a>
+              </div>
+
+              {/* Map placeholder */}
+              <div className="relative mt-6 flex-1">
+                <div className="relative flex h-full min-h-44 items-center justify-center overflow-hidden rounded-xl border border-ivory/12 bg-white/[0.04]">
+                  <span className="sr-only">Map placeholder</span>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-0 opacity-40 [background-image:linear-gradient(rgba(250,248,241,0.07)_1px,transparent_1px),linear-gradient(90deg,rgba(250,248,241,0.07)_1px,transparent_1px)] [background-size:28px_28px]"
+                  />
+                  <span
+                    aria-hidden="true"
+                    className="relative grid h-12 w-12 place-items-center rounded-full bg-clay-500 text-ivory shadow-[0_12px_30px_-10px_rgba(192,95,53,0.9)]"
+                  >
+                    <MapPin className="h-5 w-5 animate-pulse" />
+                  </span>
+                  <p className="absolute bottom-3 text-xs font-semibold tracking-wide text-forest-100/60">
+                    Kampala, Uganda — map to be embedded
+                  </p>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          {/* Contact form — light card */}
+          <Reveal delay={0.15}>
+            <div className="h-full rounded-2xl border border-forest-900/10 bg-white p-6 shadow-[0_24px_55px_-32px_rgba(11,26,18,0.35)] sm:p-8 lg:p-10">
             {status === "validated" ? (
               <div
                 role="status"
@@ -179,18 +215,28 @@ export function Contact() {
               </div>
             ) : (
               <>
-                <h3 className="font-display text-2xl text-forest-950">Send a message</h3>
-                <p className="mt-2 text-sm text-charcoal/60">
-                  We read every message and respond as soon as we can.
-                </p>
+                <div className="flex items-start gap-4">
+                  <span className="inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-forest-950 text-gold-300">
+                    <MessageSquare aria-hidden="true" className="h-5 w-5" strokeWidth={1.75} />
+                  </span>
+                  <div>
+                    <h3 className="font-display text-2xl leading-tight text-forest-950">Send a message</h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-charcoal/65">
+                      We read every message and respond as soon as we can.
+                    </p>
+                  </div>
+                </div>
 
                 {status === "error" && (
-                  <p
+                  <div
                     role="alert"
-                    className="mt-5 rounded-sm border border-clay-300 bg-clay-50 px-4 py-3 text-sm font-semibold text-clay-800"
+                    className="mt-6 flex items-start gap-3 rounded-xl border border-clay-600/25 bg-clay-50 p-4"
                   >
-                    A few fields need your attention before sending.
-                  </p>
+                    <AlertCircle aria-hidden="true" className="mt-0.5 h-5 w-5 shrink-0 text-clay-600" />
+                    <p className="text-sm leading-relaxed text-clay-800">
+                      A few fields need your attention before sending.
+                    </p>
+                  </div>
                 )}
 
                 <form onSubmit={handleSubmit} noValidate className="mt-8 grid gap-5 sm:grid-cols-2">
@@ -237,19 +283,29 @@ export function Contact() {
                     >
                       Reason for contacting
                     </label>
-                    <select
-                      id="reason"
-                      value={values.reason}
-                      onChange={(e) => handleChange("reason", e.target.value)}
-                      className={inputClasses}
-                    >
-                      <option value="">Please choose…</option>
-                      {contact.reasons.map((reason) => (
-                        <option key={reason} value={reason}>
-                          {reason}
-                        </option>
-                      ))}
-                    </select>
+                    <div className="relative">
+                      <select
+                        id="reason"
+                        value={values.reason}
+                        onChange={(e) => handleChange("reason", e.target.value)}
+                        aria-describedby="reason-hint"
+                        className={`${inputClasses} appearance-none pr-10`}
+                      >
+                        <option value="">Please choose…</option>
+                        {contact.reasons.map((reason) => (
+                          <option key={reason} value={reason}>
+                            {reason}
+                          </option>
+                        ))}
+                      </select>
+                      <ChevronDown
+                        aria-hidden="true"
+                        className="pointer-events-none absolute right-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-charcoal/40"
+                      />
+                    </div>
+                    <p id="reason-hint" className="mt-1.5 text-xs text-charcoal/45">
+                      Optional — it helps us route your enquiry.
+                    </p>
                   </div>
 
                   <div className="sm:col-span-2">
@@ -268,7 +324,7 @@ export function Contact() {
                       aria-required="true"
                       aria-invalid={errors.message ? "true" : undefined}
                       aria-describedby={errors.message ? "message-error" : undefined}
-                      className={inputClasses}
+                      className={`${inputClasses} min-h-32 resize-y`}
                     />
                     {errors.message && (
                       <p id="message-error" className="mt-1.5 text-xs font-semibold text-clay-700">
@@ -277,25 +333,16 @@ export function Contact() {
                     )}
                   </div>
 
-                  <div className="sm:col-span-2 flex flex-wrap items-center gap-4">
+                  <div className="sm:col-span-2 flex flex-wrap items-center gap-4 border-t border-forest-900/10 pt-6">
                     <button
                       type="submit"
                       className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest-950 px-8 py-3 text-sm font-bold tracking-wide text-ivory transition-colors duration-300 hover:bg-clay-500"
                     >
                       Send Message
-                      <svg
-                        viewBox="0 0 24 24"
+                      <Send
                         aria-hidden="true"
                         className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="m22 2-7 20-4-9-9-4Z" />
-                        <path d="M22 2 11 13" />
-                      </svg>
+                      />
                     </button>
                     <p className="flex items-center gap-2 text-xs text-charcoal/50">
                       <Info className="h-3.5 w-3.5 shrink-0 text-gold-600" aria-hidden="true" />
@@ -305,8 +352,9 @@ export function Contact() {
                 </form>
               </>
             )}
-          </div>
-        </Reveal>
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
