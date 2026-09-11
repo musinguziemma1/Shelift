@@ -1,6 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUpRight, Menu, X } from "lucide-react";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import { navLinks } from "../data/content";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { useScrolled } from "../hooks/useScrolled";
@@ -9,7 +9,7 @@ import { Brand } from "./Brand";
 
 const sectionIds = navLinks.map((link) => link.href.slice(1));
 
-export function Navbar() {
+export const Navbar = memo(function Navbar() {
   const scrolled = useScrolled(40);
   const [open, setOpen] = useState(false);
   const active = useActiveSection(sectionIds);
@@ -164,4 +164,4 @@ export function Navbar() {
       </AnimatePresence>
     </>
   );
-}
+});
