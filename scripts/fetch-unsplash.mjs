@@ -4,8 +4,8 @@
  *
  * Photo selection is aligned with SHELIFT's themes (women & girls, community,
  * health, education, livelihoods, leadership). Each photo is served from
- * Unsplash's public CDN (images.unsplash.com) under the free Unsplash
- * License. Attribution is recorded in /images-credits.md.
+ * Unsplash's public CDN under the free Unsplash License. Attribution is
+ * recorded in /images-credits.md.
  *
  * These are representative placeholders — replace them with official SHELIFT
  * field photography at any time by dropping files into public/images/.
@@ -23,6 +23,10 @@ mkdirSync(outDir, { recursive: true });
 
 /* ------------------------------------------------------------------ */
 /* Slot → Unsplash photo mapping                                       */
+/*                                                                     */
+/* host: "images" (images.unsplash.com/photo-…) or "plus"              */
+/* (plus.unsplash.com/premium_photo-…). Getty/contributor photos live  */
+/* on the plus host and 404 on images.unsplash.com.                    */
 /* ------------------------------------------------------------------ */
 
 const slots = [
@@ -73,8 +77,8 @@ const slots = [
     w: 1200,
     h: 1500,
     position: "centre",
-    id: "photo-1573497019940-1c28c88b4f3e",
-    note: "A confident Black businesswoman in professional attire, centred portrait — representative founder image.",
+    id: "photo-1573496359142-b8d87734a5a2",
+    note: "Confident Black businesswoman with arms crossed in corporate attire — representative founder image.",
   },
   {
     file: "board-01.jpg",
@@ -82,23 +86,23 @@ const slots = [
     h: 800,
     position: "centre",
     id: "photo-1560250097-0b93528c311a",
-    note: "A professional Black man in a suit, centred portrait — representative board image.",
+    note: "Smiling Black businessman in a classic suit and tie — representative board image.",
   },
   {
     file: "board-02.jpg",
     w: 800,
     h: 800,
     position: "centre",
-    id: "photo-1519085360753-af0119f7cbe7",
-    note: "A smiling Black businessman in a suit — representative board image.",
+    id: "photo-1531384441138-2736e62e0919",
+    note: "Portrait of a Black man in professional attire — representative board image.",
   },
   {
     file: "board-03.jpg",
     w: 800,
     h: 800,
     position: "centre",
-    id: "photo-1573496359142-b8d87734a5a2",
-    note: "A professional Black businesswoman with arms crossed — representative board image.",
+    id: "photo-1573497019940-1c28c88b4f3e",
+    note: "Smiling Black businesswoman seated at a desk in professional attire — representative board image.",
   },
   {
     file: "health.jpg",
@@ -179,15 +183,21 @@ const slots = [
   },
 ];
 
-const CDN = (id, w) =>
-  `https://images.unsplash.com/${id}?q=80&w=${w}&fm=jpg&fit=max&auto=format`;
+const CDN = (slot) => {
+  const base =
+    slot.host === "plus"
+      ? `https://plus.unsplash.com/${slot.id}`
+      : `https://images.unsplash.com/${slot.id}`;
+  const w = Math.max(slot.w, 1600);
+  return `${base}?q=80&w=${w}&fm=jpg&fit=max&auto=format`;
+};
 
 let ok = 0;
 let failed = 0;
 
 for (const slot of slots) {
   try {
-    const res = await fetch(CDN(slot.id, Math.max(slot.w, 1600)), {
+    const res = await fetch(CDN(slot), {
       headers: { "Accept": "image/jpeg" },
     });
     if (!res.ok) throw new Error(`HTTP ${res.status}`);

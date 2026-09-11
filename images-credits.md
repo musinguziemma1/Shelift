@@ -21,7 +21,7 @@ npm run fetch:photos
 | `hero-04.jpg` | [Woman smiling while working on her laptop](https://unsplash.com/photos/woman-sitting-and-smiling-with-macbook-on-her-lap-e6wu8EiFUB0) | Unsplash |
 | `hero-05.jpg` | [Woman in an orange blazer](https://unsplash.com/photos/woman-in-orange-blazer-standing-AzVexpHvuKY) | Etty Fidele |
 | `about.jpg` | [Woman in a floral dress beside a tree](https://unsplash.com/photos/woman-in-blue-and-yellow-floral-dress-standing-beside-green-leaved-tree-during-daytime-A5an19IyGw0) | Unsplash |
-| `founder.jpg` | Corporate portrait of a Black businesswoman (representative placeholder) | Unsplash |
+| `founder.jpg` | Confident Black businesswoman with arms crossed in corporate attire (representative placeholder) | Unsplash |
 | `health.jpg` | [A woman clinician with a stethoscope](https://unsplash.com/photos/a-woman-wearing-a-white-coat-and-a-stethoscope-TPT4pevJEmQ) | Unsplash |
 | `education.jpg` | [A school child in a green-and-white uniform](https://unsplash.com/photos/boy-in-green-and-white-polo-shirt-AmKMFcROG9o) | Abubakar Balogun |
 | `livelihoods.jpg` | [A group learning together with a laptop](https://unsplash.com/photos/a-group-of-people-sitting-on-a-couch-looking-at-a-laptop) | Iwaria Inc. |
@@ -32,9 +32,9 @@ npm run fetch:photos
 | `story-04.jpg` | [Three women seated around a wooden table](https://unsplash.com/photos/three-women-sitting-beside-wooden-table-c6wbSBaYxkY) | Unsplash |
 | `story-05.jpg` | [Two smiling women in colourful cloth](https://unsplash.com/photos/two-smiling-women-embracing-draped-in-a-colorful-cloth-IWlt48aX9QU) | Unsplash |
 | `cta.jpg` | [People dancing on brown soil, Uganda](https://unsplash.com/photos/people-dancing-on-brown-soil-T6Gig_Rr2dw) | Roman Derrick Okello |
-| `board-01.jpg` | Professional portrait of a Black businessman in a suit (representative placeholder) | Unsplash |
-| `board-02.jpg` | Smiling Black businessman in a suit (representative placeholder) | Unsplash |
-| `board-03.jpg` | Professional portrait of a Black businesswoman (representative placeholder) | Unsplash |
+| `board-01.jpg` | Smiling Black businessman in a classic suit and tie (representative placeholder) | Unsplash |
+| `board-02.jpg` | Portrait of a Black man in professional attire (representative placeholder) | Unsplash |
+| `board-03.jpg` | Smiling Black businesswoman seated at a desk in professional attire (representative placeholder) | Unsplash |
 
 Photo page slugs link to the original Unsplash pages where full contributor
 credit is shown. Where the photographer name is not known to us, links to the

@@ -16,12 +16,12 @@ export const leadership = {
   headline: "Rooted in community, led with purpose.",
   lead: "SHELIFT is shaped by a founder whose vision grew from lived experience, and guided by a board committed to accountability, transparency, and the communities we serve.",
   founder: {
-    name: "Dorah Nagawa",
+    name: "Dorah Nakagga",
     role: "Founder",
-    title: "Founder, SHELIFT",
+    title: "Founder and Director of SHELIFT",
     image: images.founder,
     paragraphs: [
-      "SHELIFT was inspired by the lived experiences and vision of our founder, Dorah Nagawa — built on real understanding of the barriers adolescent girls, women, and households face in accessing healthcare, education, and economic opportunity in Uganda.",
+      "SHELIFT was inspired by the lived experiences and vision of our founder, Dorah Nakagga — built on real understanding of the barriers adolescent girls, women, and households face in accessing healthcare, education, and economic opportunity in Uganda.",
       "Her leadership keeps communities at the centre of our work, ensuring every program is shaped by the people it is designed to serve.",
     ],
     pull: "Community voices at the heart of every decision.",
@@ -31,7 +31,7 @@ export const leadership = {
   board: [
     {
       id: "board-01",
-      name: "Board Member",
+      name: "Sendaula Emmanuel",
       role: "Governance & Strategy",
       image: images.board01,
       short:
@@ -39,7 +39,7 @@ export const leadership = {
     },
     {
       id: "board-02",
-      name: "Board Member",
+      name: "Musinguzi Emmanuel",
       role: "Finance & Accountability",
       image: images.board02,
       short:
@@ -47,7 +47,7 @@ export const leadership = {
     },
     {
       id: "board-03",
-      name: "Board Member",
+      name: "Nabukenya Sarah",
       role: "Community & Programmes",
       image: images.board03,
       short:
