@@ -72,8 +72,33 @@ const slots = [
     file: "founder.jpg",
     w: 1200,
     h: 1500,
-    id: "photo-1741940423559-6a9dda0f4cdb",
-    note: "A smiling woman poses outdoors amongst greenery — representative portrait.",
+    position: "centre",
+    id: "photo-1573497019940-1c28c88b4f3e",
+    note: "A confident Black businesswoman in professional attire, centred portrait — representative founder image.",
+  },
+  {
+    file: "board-01.jpg",
+    w: 800,
+    h: 800,
+    position: "centre",
+    id: "photo-1560250097-0b93528c311a",
+    note: "A professional Black man in a suit, centred portrait — representative board image.",
+  },
+  {
+    file: "board-02.jpg",
+    w: 800,
+    h: 800,
+    position: "centre",
+    id: "photo-1519085360753-af0119f7cbe7",
+    note: "A smiling Black businessman in a suit — representative board image.",
+  },
+  {
+    file: "board-03.jpg",
+    w: 800,
+    h: 800,
+    position: "centre",
+    id: "photo-1573496359142-b8d87734a5a2",
+    note: "A professional Black businesswoman with arms crossed — representative board image.",
   },
   {
     file: "health.jpg",
@@ -169,7 +194,7 @@ for (const slot of slots) {
     const buf = Buffer.from(await res.arrayBuffer());
 
     await sharp(buf)
-      .resize(slot.w, slot.h, { fit: "cover", position: sharp.strategy.attention })
+      .resize(slot.w, slot.h, { fit: "cover", position: slot.position ?? sharp.strategy.attention })
       .jpeg({ quality: 76, mozjpeg: true, progressive: true })
       .toFile(join(outDir, slot.file));
 

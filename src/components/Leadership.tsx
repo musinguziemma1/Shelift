@@ -1,4 +1,3 @@
-import { Users } from "lucide-react";
 import { leadership } from "../data/leadership";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
@@ -34,8 +33,8 @@ export function Leadership() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <SmartImage
                 src={leadership.founder.image}
-                alt="Representative portrait — official founder photography of Dorah Nagawa to be added"
-                className="h-full w-full object-cover"
+                alt="Representative corporate portrait — official founder photography of Dorah Nagawa to be added"
+                className="h-full w-full object-cover object-center"
               />
             </div>
             <span className="absolute bottom-5 left-5 rounded-full bg-forest-950/80 px-4 py-1.5 text-[0.6rem] font-extrabold uppercase tracking-[0.25em] text-gold-400 backdrop-blur-sm">
@@ -81,10 +80,13 @@ export function Leadership() {
             {leadership.board.map((member, i) => (
               <Reveal key={member.id} delay={i * 0.1} y={24} className="h-full">
                 <figure className="group flex h-full flex-col items-center rounded-sm border border-ivory/10 bg-forest-900/40 p-8 text-center transition-all duration-500 hover:-translate-y-1 hover:border-gold-400/40">
-                  <span className="relative grid h-24 w-24 place-items-center rounded-full border border-gold-400/30 bg-forest-800">
-                    <span aria-hidden="true" className="absolute -inset-2 rounded-full border border-ivory/10" />
-                    <Users className="h-8 w-8 text-gold-400/80" aria-hidden="true" />
-                    <span className="sr-only">Board member portrait placeholder</span>
+                  <span className="relative block h-28 w-28">
+                    <span aria-hidden="true" className="absolute -inset-2 rounded-full border border-ivory/10 transition-colors duration-500 group-hover:border-gold-400/40" />
+                    <SmartImage
+                      src={member.image}
+                      alt="Representative board portrait — official member photography to be added"
+                      className="h-28 w-28 rounded-full border border-gold-400/30 object-cover object-center"
+                    />
                   </span>
                   <figcaption className="mt-6">
                     <p className="font-display text-xl text-ivory">{member.name}</p>

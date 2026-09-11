@@ -3,9 +3,11 @@
  *
  * The founder, Dorah Nagawa, is named in the SHELIFT Strategic Plan brief.
  * Board member names/portfolios are NOT specified in any available source of
- * truth, so the three board slots are deliberately honest placeholders —
- * replace the name, role, and short fields with the real details from the
- * Strategic Plan 2025–2027 before launch.
+ * truth, so the three board slots use role-based focus titles with short
+ * duty descriptions as honest placeholders — replace the name, role, and
+ * short fields with the real details from the Strategic Plan 2025–2027
+ * before launch. Portraits are representative Unsplash placeholders, not
+ * the real people.
  */
 import { images } from "./images";
 
@@ -30,22 +32,28 @@ export const leadership = {
     {
       id: "board-01",
       name: "Board Member",
-      role: "Governing Board",
-      short: "Name and biography to be completed from the Strategic Plan 2025–2027.",
+      role: "Governance & Strategy",
+      image: images.board01,
+      short:
+        "Guides organisational strategy, policy, and compliance — keeping SHELIFT accountable to its mission and the communities it serves.",
     },
     {
       id: "board-02",
       name: "Board Member",
-      role: "Governing Board",
-      short: "Name and biography to be completed from the Strategic Plan 2025–2027.",
+      role: "Finance & Accountability",
+      image: images.board02,
+      short:
+        "Oversees budgets, financial controls, and transparent reporting so every programme delivers real value for money.",
     },
     {
       id: "board-03",
       name: "Board Member",
-      role: "Governing Board",
-      short: "Name and biography to be completed from the Strategic Plan 2025–2027.",
+      role: "Community & Programmes",
+      image: images.board03,
+      short:
+        "Brings community voice into programme design and safeguarding, so health, education, and livelihoods work reaches those most in need.",
     },
   ] as const,
   boardNote:
-    "Board member names, portfolios, and biographies will be completed from the Strategic Plan 2025–2027 before launch.",
+    "Portraits are representative placeholders. Member names, portfolios, and biographies will be completed from the Strategic Plan 2025–2027 before launch.",
 } as const;

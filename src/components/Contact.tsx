@@ -353,7 +353,7 @@ export function Contact() {
                     </button>
                     <p className="flex items-center gap-2 text-xs text-charcoal/50">
                       <Info className="h-3.5 w-3.5 shrink-0 text-gold-600" aria-hidden="true" />
-                      Frontend validation only — wire this form to an email provider or backend when live.
+                      We love to hear from you.
                     </p>
                   </div>
                 </form>

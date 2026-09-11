@@ -1,4 +1,4 @@
-import { ArrowRight, Building2, Factory, Globe2, GraduationCap, HandHeart, Landmark, Pause, Play } from "lucide-react";
+import { Building2, Factory, Globe2, GraduationCap, HandHeart, Landmark, Pause, Play } from "lucide-react";
 import { useId, useState } from "react";
 import { partnerships } from "../data/engage";
 import { Reveal } from "./ui/Reveal";
@@ -63,30 +63,6 @@ export function Partnerships() {
         </div>
       </Reveal>
 
-      <div className="container-x">
-        <Reveal delay={0.1} className="mt-10">
-          <div className="relative flex flex-col items-center gap-4 overflow-hidden rounded-2xl border border-dashed border-forest-900/25 bg-sand-50 px-6 py-10 text-center sm:px-10">
-            <p className="eyebrow text-clay-600">Your logo here</p>
-            <p className="max-w-xl text-sm leading-relaxed text-charcoal/65 sm:text-base">
-              We reserve this wall for the government agencies, companies, NGOs, universities,
-              microfinance organisations, and development partners who will walk with SHELIFT.
-            </p>
-            <a
-              href="#contact"
-              className="group mt-1 inline-flex items-center gap-2 rounded-full bg-forest-950 px-6 py-3 text-sm font-bold text-ivory transition-colors duration-300 hover:bg-clay-500"
-            >
-              Start a conversation
-              <ArrowRight
-                aria-hidden="true"
-                className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-              />
-            </a>
-          </div>
-          <p className="mt-4 text-center text-xs leading-relaxed text-charcoal/50">
-            Placeholders only — no partner names or logos are shown until formally approved.
-          </p>
-        </Reveal>
-      </div>
     </section>
   );
 }
