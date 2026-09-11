@@ -15,6 +15,9 @@ interface SmartImageProps {
  * Image with an elegant built-in fallback: if the asset is unavailable the
  * surrounding frame keeps its gradient and shows a quiet monogram instead of
  * a broken-image glyph.
+ *
+ * Automatically serves WebP when the browser supports it — the WebP variant
+ * is expected at the same path with the extension swapped to `.webp`.
  */
 export function SmartImage({
   src,
@@ -40,15 +43,22 @@ export function SmartImage({
     );
   }
 
+  /* Derive WebP path: "images/hero.jpg" → "images/hero.webp" */
+  const webpSrc = src.replace(/\.\w+$/, ".webp");
+  const isSameFile = webpSrc === src;
+
   return (
-    <img
-      src={src}
-      alt={alt}
-      loading={priority ? "eager" : "lazy"}
-      decoding="async"
-      fetchPriority={priority ? "high" : "auto"}
-      onError={() => setFailed(true)}
-      className={className}
-    />
+    <picture>
+      {!isSameFile && <source srcSet={webpSrc} type="image/webp" />}
+      <img
+        src={src}
+        alt={alt}
+        loading={priority ? "eager" : "lazy"}
+        decoding="async"
+        fetchPriority={priority ? "high" : "auto"}
+        onError={() => setFailed(true)}
+        className={className}
+      />
+    </picture>
   );
 }

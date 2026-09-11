@@ -93,7 +93,7 @@ export function Footer() {
           <p className="text-sm text-forest-100/60">
             © 2026 SHELIFT. All rights reserved.
           </p>
-          <p className="text-xs leading-relaxed text-forest-100/40">
+          <p className="text-xs leading-relaxed text-forest-100/55">
             A Ugandan organisation working to empower adolescent girls, women, and
             households through health, education, livelihoods, and gender equity.
           </p>

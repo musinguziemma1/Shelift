@@ -86,7 +86,7 @@ export const gallery = {
     },
   ] as const,
   note:
-    "Here are the success stories for SHELIFT success of young women",
+    "Success stories from the young women and communities SHELIFT serves.",
 } as const;
 
 /* ------------------------------------------------------------------ */

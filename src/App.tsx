@@ -8,6 +8,8 @@ import { Hero } from "./components/Hero";
 import { Navbar } from "./components/Navbar";
 import { PurposeStrip } from "./components/PurposeStrip";
 import { VisionMission } from "./components/VisionMission";
+import { ErrorBoundary } from "./components/ui/ErrorBoundary";
+import { NotFound } from "./NotFound";
 
 /* Below-fold sections are code-split so the critical path stays lean. */
 const StrategicAreas = lazy(() =>
@@ -38,6 +40,12 @@ function PageFallback() {
 }
 
 export default function App() {
+  const notFound = window.location.pathname !== "/";
+
+  if (notFound) {
+    return <NotFound />;
+  }
+
   return (
     <MotionConfig reducedMotion="user">
       <a href="#main" className="skip-link">
@@ -50,16 +58,18 @@ export default function App() {
         <About />
         <VisionMission />
         <Approach />
-        <Suspense fallback={<PageFallback />}>
-          <StrategicAreas />
-          <StoryGallery />
-          <ImpactPathway />
-          <Targets />
-          <Leadership />
-          <Partnerships />
-          <Cta />
-          <Contact />
-        </Suspense>
+        <ErrorBoundary>
+          <Suspense fallback={<PageFallback />}>
+            <StrategicAreas />
+            <StoryGallery />
+            <ImpactPathway />
+            <Targets />
+            <Leadership />
+            <Partnerships />
+            <Cta />
+            <Contact />
+          </Suspense>
+        </ErrorBoundary>
       </main>
       <Footer />
       <BackToTop />

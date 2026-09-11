@@ -1,6 +1,6 @@
 /**
  * Downloads real Unsplash photography for every image slot on the SHELIFT
- * site and renders site-optimized JPEGs with sharp.
+ * site and renders site-optimized JPEG + WebP with sharp.
  *
  * Photo selection is aligned with SHELIFT's themes (women & girls, community,
  * health, education, livelihoods, leadership). Each photo is served from
@@ -16,7 +16,7 @@
  * Usage: npm run fetch:photos
  */
 import { mkdirSync, writeFileSync } from "node:fs";
-import { dirname, join } from "node:path";
+import { dirname, join, basename } from "node:path";
 import { fileURLToPath } from "node:url";
 import sharp from "sharp";
 
@@ -194,13 +194,23 @@ for (const slot of slots) {
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const buf = Buffer.from(await res.arrayBuffer());
 
+    const baseName = basename(slot.file, /\.\w+$/.exec(slot.file)?.[0] ?? "");
+
+    /* JPEG — original format */
     await sharp(buf)
       .resize(slot.w, slot.h, { fit: "cover", position: slot.position ?? sharp.strategy.attention })
       .jpeg({ quality: 76, mozjpeg: true, progressive: true })
       .toFile(join(outDir, slot.file));
 
+    /* WebP — modern format, ~25-35% smaller */
+    const webpFile = `${baseName}.webp`;
+    await sharp(buf)
+      .resize(slot.w, slot.h, { fit: "cover", position: slot.position ?? sharp.strategy.attention })
+      .webp({ quality: 75 })
+      .toFile(join(outDir, webpFile));
+
     ok++;
-    console.log(`ok ${slot.file} (${slot.w}x${slot.h})`);
+    console.log(`ok ${slot.file} + ${webpFile} (${slot.w}x${slot.h})`);
   } catch (err) {
     failed++;
     console.error(`FAIL ${slot.file}: ${err.message}`);

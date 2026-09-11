@@ -9,8 +9,9 @@ import { fadeUpItem, staggerContainer, viewportOnce } from "../lib/motion";
  */
 export function PurposeStrip() {
   return (
-    <section aria-label="SHELIFT's four strategic areas" className="bg-forest-950 py-14 lg:py-16">
+    <section className="bg-forest-950 py-14 lg:py-16">
       <div className="container-x">
+        <h2 className="sr-only">SHELIFT's four strategic areas</h2>
         <motion.ol
           variants={staggerContainer}
           initial="hidden"

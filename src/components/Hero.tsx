@@ -16,7 +16,6 @@ export function Hero() {
   const [active, setActive] = useState(0);
   const [paused, setPaused] = useState(false);
   const [hovered, setHovered] = useState(false);
-  const slide = heroSlides[active];
 
   /* Auto-advance — paused on hover/focus-in, stops for reduced motion. */
   useEffect(() => {
@@ -38,9 +37,9 @@ export function Hero() {
       onMouseLeave={() => setHovered(false)}
     >
       {/* Cinematic background — crossfade with a slow, elegant settle */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         <motion.div
-          key={slide.id}
+          key={heroSlides[active].id}
           aria-hidden="true"
           className="absolute inset-0"
           initial={motionOn ? { opacity: 0, scale: 1.04 } : { opacity: 0 }}
@@ -49,9 +48,9 @@ export function Hero() {
           transition={{ duration: 1.3, ease: EASE }}
         >
           <SmartImage
-            src={slide.image}
-            alt={slide.alt}
-            priority
+            src={heroSlides[active].image}
+            alt={heroSlides[active].alt}
+            priority={active === 0}
             className="h-full w-full object-cover"
           />
         </motion.div>
@@ -81,7 +80,7 @@ export function Hero() {
       <div className="container-x relative z-10 flex flex-1 flex-col justify-end pb-28 pt-36">
         <AnimatePresence mode="wait">
           <motion.div
-            key={slide.id}
+            key={heroSlides[active].id}
             initial={motionOn ? { opacity: 0, y: 22 } : { opacity: 0 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, transition: { duration: 0.25, ease: EASE } }}
@@ -94,11 +93,11 @@ export function Hero() {
               className="eyebrow flex items-center gap-3 text-gold-400"
             >
               <span aria-hidden="true" className="h-px w-10 bg-gold-400" />
-              {slide.eyebrow}
+              {heroSlides[active].eyebrow}
             </motion.p>
 
             <h1 className="mt-6 max-w-4xl font-display text-[2.7rem] leading-[1.04] text-ivory sm:text-6xl lg:text-7xl">
-              {slide.headline.map((line, i) => (
+              {heroSlides[active].headline.map((line, i) => (
                 <span key={line} className="block overflow-hidden pb-1">
                   <motion.span
                     className="block will-change-transform"
@@ -118,7 +117,7 @@ export function Hero() {
               transition={{ duration: 0.7, ease: EASE, delay: 0.72 }}
               className="mt-7 max-w-xl text-base leading-relaxed text-ivory/85 sm:text-lg"
             >
-              {slide.supporting}
+              {heroSlides[active].supporting}
             </motion.p>
 
             <motion.div
