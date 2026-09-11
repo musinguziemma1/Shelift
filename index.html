@@ -17,8 +17,16 @@
     <meta name="color-scheme" content="light" />
     <link rel="canonical" href="https://www.sheliftuganda.org/" />
 
+    <!-- Localisation & geo signals -->
+    <meta name="geo.region" content="UG" />
+    <meta name="geo.placename" content="Kampala, Uganda" />
+
+    <!-- LCP: preload the first hero image -->
+    <link rel="preload" as="image" href="/images/hero.jpg" fetchpriority="high" />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
+    <meta property="og:locale" content="en_UG" />
     <meta property="og:site_name" content="SHELIFT" />
     <meta property="og:title" content="SHELIFT | Health, Education & Livelihoods for Women and Girls" />
     <meta
@@ -55,12 +63,15 @@
       {
         "@context": "https://schema.org",
         "@type": "NGO",
+        "@id": "https://www.sheliftuganda.org/#org",
         "name": "SHELIFT",
         "legalName": "Sustainable Health, Education, and Livelihood Initiative for Transformation",
         "url": "https://www.sheliftuganda.org/",
         "logo": "https://www.sheliftuganda.org/logo.png",
         "slogan": "Strengthening Health, Education, and Livelihoods for Inclusive Future Transformation.",
-        "email": "mailto:info@sheliftuganda.org",
+        "alternateName": "Sustainable Health, Education, and Livelihood Initiative for Transformation",
+        "nonprofitStatus": "https://schema.org/NonprofitType",
+        "email": "info@sheliftuganda.org",
         "telephone": "+256704176711",
         "address": {
           "@type": "PostalAddress",
@@ -68,8 +79,35 @@
           "addressLocality": "Kampala",
           "addressCountry": "UG"
         },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "info@sheliftuganda.org",
+          "telephone": "+256704176711",
+          "availableLanguage": ["en"]
+        },
         "areaServed": { "@type": "Country", "name": "Uganda" },
+        "knowsAbout": [
+          "Women's health",
+          "Adolescent health",
+          "Girls' education",
+          "Vocational training",
+          "Women's economic empowerment",
+          "Gender equity"
+        ],
         "sameAs": []
+      }
+    </script>
+
+    <!-- WebSite structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "SHELIFT",
+        "url": "https://www.sheliftuganda.org/",
+        "inLanguage": "en",
+        "publisher": { "@id": "https://www.sheliftuganda.org/#org" }
       }
     </script>
   </head>
