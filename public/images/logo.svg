@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <style>
+      .body { fill: #8B1A1A; }
+      .head { fill: #1B7F95; }
+    </style>
+  </defs>
+
+  <!--
+    Five stylised figures arranged in a C-shaped arc (open on the right).
+    Each figure: teal circle (head) + maroon body with raised arms.
+    Positions computed on a circle of r=150, centre (185,200),
+    spaced from -80° to +80° (where 0° = left / 9 o'clock).
+  -->
+
+  <!-- Figure 1 — top-left (~10 o'clock, -60°) -->
+  <g transform="translate(110, 75)">
+    <circle cx="0" cy="0" r="16" class="head"/>
+    <path d="M0,12 C-8,12 -42,30 -48,62 L0,48 L48,62 C42,30 8,12 0,12Z" class="body"/>
+  </g>
+
+  <!-- Figure 2 — left-upper (~9 o'clock, -30°) -->
+  <g transform="translate(52, 185)">
+    <circle cx="0" cy="0" r="16" class="head"/>
+    <path d="M0,12 C-8,12 -42,30 -48,62 L0,48 L48,62 C42,30 8,12 0,12Z" class="body"/>
+  </g>
+
+  <!-- Figure 3 — left (~8 o'clock, 0°) -->
+  <g transform="translate(52, 305)">
+    <circle cx="0" cy="0" r="16" class="head"/>
+    <path d="M0,12 C-8,12 -42,30 -48,62 L0,48 L48,62 C42,30 8,12 0,12Z" class="body"/>
+  </g>
+
+  <!-- Figure 4 — lower-left (~7 o'clock, +30°) -->
+  <g transform="translate(110, 395)">
+    <circle cx="0" cy="0" r="16" class="head"/>
+    <path d="M0,12 C-8,12 -42,30 -48,62 L0,48 L48,62 C42,30 8,12 0,12Z" class="body"/>
+  </g>
+
+  <!-- Figure 5 — bottom (~6 o'clock, +60°) -->
+  <g transform="translate(220, 415)">
+    <circle cx="0" cy="0" r="16" class="head"/>
+    <path d="M0,12 C-8,12 -42,30 -48,62 L0,48 L48,62 C42,30 8,12 0,12Z" class="body"/>
+  </g>
+</svg>
