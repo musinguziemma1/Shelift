@@ -12,6 +12,8 @@ interface FormValues {
   organization: string;
   reason: string;
   message: string;
+  /** Honeypot — bots fill it, humans never see it. */
+  website: string;
 }
 
 const initialValues: FormValues = {
@@ -20,6 +22,7 @@ const initialValues: FormValues = {
   organization: "",
   reason: "",
   message: "",
+  website: "",
 };
 
 const inputClasses =
@@ -56,6 +59,13 @@ export function Contact() {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    /* Honeypot filled → almost certainly a bot. Show success and drop it. */
+    if (values.website.trim() !== "") {
+      setStatus("sent");
+      return;
+    }
+
     if (!validate()) {
       setStatus("error");
       return;
@@ -73,6 +83,7 @@ export function Contact() {
           organization: values.organization.trim(),
           reason: values.reason,
           message: values.message.trim(),
+          website: values.website,
         }),
       });
 
@@ -293,6 +304,18 @@ export function Contact() {
                 )}
 
                 <form onSubmit={handleSubmit} noValidate className="mt-8 grid gap-5 sm:grid-cols-2">
+                  {/* Honeypot — visually hidden; bots that fill it are dropped. */}
+                  <div className="sr-only" aria-hidden="true">
+                    <label htmlFor="website">Leave this field empty</label>
+                    <input
+                      id="website"
+                      type="text"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      value={values.website}
+                      onChange={(e) => handleChange("website", e.target.value)}
+                    />
+                  </div>
                   <FormField
                     id="name"
                     label="Name"

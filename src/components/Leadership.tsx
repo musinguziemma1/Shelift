@@ -82,11 +82,19 @@ export function Leadership() {
                 <figure className="group flex h-full flex-col items-center rounded-sm border border-ivory/10 bg-forest-900/40 p-8 text-center transition-all duration-500 hover:-translate-y-1 hover:border-gold-400/40">
                   <span className="relative block h-28 w-28">
                     <span aria-hidden="true" className="absolute -inset-2 rounded-full border border-ivory/10 transition-colors duration-500 group-hover:border-gold-400/40" />
-                    <SmartImage
-                      src={member.image}
-                      alt={`${member.name}, ${member.role} — SHELIFT Governing Board`}
-                      className="h-28 w-28 rounded-full border border-gold-400/30 object-cover object-center"
-                    />
+                    {/* Initials monogram — real portraits replace this once
+                        consented photography is available (see README). */}
+                    <span
+                      aria-hidden="true"
+                      className="grid h-28 w-28 place-items-center rounded-full border border-gold-400/30 bg-forest-900 font-display text-3xl tracking-wide text-gold-300"
+                    >
+                      {member.name
+                        .split(" ")
+                        .map((part) => part.charAt(0))
+                        .filter(Boolean)
+                        .slice(0, 2)
+                        .join("")}
+                    </span>
                   </span>
                   <figcaption className="mt-6">
                     <p className="font-display text-xl text-ivory">{member.name}</p>

@@ -42,7 +42,9 @@ npm run fetch:photos            # fetch+optimize the Unsplash photo set (18 imag
 
 ```text
 shelift/
-├── index.html                     # SEO, Open Graph, JSON-LD, fonts
+├── index.html                     # SEO, Open Graph, JSON-LD, favicons, fonts
+├── api/
+│   └── contact.ts                 # Vercel serverless — contact form → Resend
 ├── public/
 │   ├── images/                    # all imagery (swap in real photos here)
 │   └── logo.png, logo-white.png, favicon-*.png, robots.txt, site.webmanifest
@@ -100,10 +102,13 @@ A dark editorial section sits between **2025–2027 Ambition** and
 **Partnerships**, featuring founder **Dorah Nakagga** (named in the Strategic
 Plan) with portrait + story, followed by the **Governing Board**.
 
-Board member names are not part of the available source of truth, so the three
-board slots render as clearly-labelled placeholders. Add the real people in
-`src/data/leadership.ts` (name, role, short biography) and the section
-populates automatically:
+Board member **names are real** (per the Strategic Plan / governing board
+records) but portraits are intentionally **initials monograms** until
+consented photography exists — pairing real names with stock photos of other
+people is a credibility risk for an NGO. When real portraits are ready, drop
+them in `public/images/` and restore the `SmartImage` render in
+`src/components/Leadership.tsx` (the previous image-based markup is in git
+history, commit `e328ecd^`).
 
 ```ts
 board: [
@@ -152,16 +157,31 @@ drop in the real portrait under the same filename when available.
 
 ## Contact form
 
-The form performs **front-end validation only** and never fakes a submission.
-On success it explains that delivery must be wired to an email provider or
-backend, and provides a direct `mailto:` fallback. Connect it to your service
-of choice (Formspree, Resend, your CMS, etc.) without a frontend rewrite.
+The form is fully wired: it POSTs to the **Vercel serverless function**
+`api/contact.ts`, which validates, sanitises, and sends via **Resend** to the
+organisation inbox. Hardening included: HTML-escaping of every user-supplied
+value (prevents email-content injection), a hidden **honeypot** field,
+per-IP burst rate limiting (5 per 15 min), same-origin enforcement, and
+length caps on all inputs. Configuration:
+
+```bash
+cp .env.example .env   # add RESEND_API_KEY locally
+```
+
+Set `RESEND_API_KEY` in Vercel → Settings → Environment Variables for
+production. `CONTACT_TO` / `CONTACT_FROM` are optional overrides — switch
+`CONTACT_FROM` to `website@sheliftuganda.org` once the domain is verified in
+Resend (SPF/DKIM), as the default `onboarding@resend.dev` is a sandbox sender.
 
 ## SEO
 
-`index.html` ships the canonical placeholder, Open Graph + Twitter card meta,
-organization `JSON-LD`, semantic headings, and a manifest. Update the
-`canonical` URL and `sameAs` socials once official domains/accounts are live.
+`index.html` ships the canonical URL, Open Graph + Twitter card meta with
+absolute image URLs, enriched `NGO` + `WebSite` JSON-LD (contact point,
+`knowsAbout`, geo tags), `robots.txt`, and a `sitemap.xml`. Remaining
+pre-launch items: verify the domain in Google Search Console and submit the
+sitemap, connect official social accounts (populates `sameAs` in the schema,
+currently empty), and optionally pre-render the route so crawlers get
+content-bearing HTML without executing JavaScript.
 
 ## Custom cursor
 
