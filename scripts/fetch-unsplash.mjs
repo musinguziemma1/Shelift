@@ -10,6 +10,9 @@
  * These are representative placeholders — replace them with official SHELIFT
  * field photography at any time by dropping files into public/images/.
  *
+ * Slots flagged `keepLocal: true` belong to the SHELIFT team (hand-provided
+ * files in public/images) and are NEVER overwritten by this script.
+ *
  * Usage: npm run fetch:photos
  */
 import { mkdirSync, writeFileSync } from "node:fs";
@@ -52,11 +55,9 @@ const slots = [
     note: "A woman teacher standing with a group of children. Photographer: Emmanuel Ikwuegbu.",
   },
   {
-    file: "hero-04.jpg",
-    w: 1920,
-    h: 1280,
-    id: "photo-1573495612522-d994e72e5f56",
-    note: "A woman smiling while working on her laptop — women and digital skills.",
+    file: "hero-04.jpeg",
+    keepLocal: true,
+    note: "Hand-provided by the SHELIFT team (livelihoods hero slide) — never auto-fetched.",
   },
   {
     file: "hero-05.jpg",
@@ -74,35 +75,23 @@ const slots = [
   },
   {
     file: "founder.jpg",
-    w: 1200,
-    h: 1500,
-    position: "centre",
-    id: "photo-1573496359142-b8d87734a5a2",
-    note: "Confident Black businesswoman with arms crossed in corporate attire — representative founder image.",
+    keepLocal: true,
+    note: "Hand-provided by the SHELIFT team (founder portrait) — never auto-fetched.",
   },
   {
     file: "board-01.jpg",
-    w: 800,
-    h: 800,
-    position: "centre",
-    id: "photo-1560250097-0b93528c311a",
-    note: "Smiling Black businessman in a classic suit and tie — representative board image.",
+    keepLocal: true,
+    note: "Hand-provided by the SHELIFT team (board portrait) — never auto-fetched.",
   },
   {
     file: "board-02.jpg",
-    w: 800,
-    h: 800,
-    position: "centre",
-    id: "photo-1531384441138-2736e62e0919",
-    note: "Portrait of a Black man in professional attire — representative board image.",
+    keepLocal: true,
+    note: "Hand-provided by the SHELIFT team (board portrait) — never auto-fetched.",
   },
   {
     file: "board-03.jpg",
-    w: 800,
-    h: 800,
-    position: "centre",
-    id: "photo-1573497019940-1c28c88b4f3e",
-    note: "Smiling Black businesswoman seated at a desk in professional attire — representative board image.",
+    keepLocal: true,
+    note: "Hand-provided by the SHELIFT team (board portrait) — never auto-fetched.",
   },
   {
     file: "health.jpg",
@@ -161,11 +150,9 @@ const slots = [
     note: "Three women seated around a wooden table — collaboration.",
   },
   {
-    file: "story-05.jpg",
-    w: 1600,
-    h: 1000,
-    id: "photo-1770240090780-a80f44963545",
-    note: "Two smiling women embracing, draped in colourful cloth.",
+    file: "story-05.jpeg",
+    keepLocal: true,
+    note: "Hand-provided by the SHELIFT team (photo story plate) — never auto-fetched.",
   },
   {
     file: "cta.jpg",
@@ -196,6 +183,10 @@ let ok = 0;
 let failed = 0;
 
 for (const slot of slots) {
+  if (slot.keepLocal) {
+    console.log(`keep-local ${slot.file} (hand-provided — skipped)`);
+    continue;
+  }
   try {
     const res = await fetch(CDN(slot), {
       headers: { "Accept": "image/jpeg" },

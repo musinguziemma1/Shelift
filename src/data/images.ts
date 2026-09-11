@@ -16,7 +16,7 @@ export const images = {
   hero: "/images/hero.jpg",
   hero02: "/images/hero-02.jpg",
   hero03: "/images/hero-03.jpg",
-  hero04: "/images/hero-04.jpg",
+  hero04: "/images/hero-04.jpeg",
   hero05: "/images/hero-05.jpg",
   about: "/images/about.jpg",
   health: "/images/health.jpg",
@@ -31,7 +31,7 @@ export const images = {
   story02: "/images/story-02.jpg",
   story03: "/images/story-03.jpg",
   story04: "/images/story-04.jpg",
-  story05: "/images/story-05.jpg",
+  story05: "/images/story-05.jpeg",
   cta: "/images/cta.jpg",
   og: "/images/og-image.jpg",
 } as const;

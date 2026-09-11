@@ -33,7 +33,7 @@ export function Leadership() {
             <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
               <SmartImage
                 src={leadership.founder.image}
-                alt="Representative corporate portrait — official founder photography of Dorah Nagawa to be added"
+                alt="Dorah Nakagga, Founder and Director of SHELIFT"
                 className="h-full w-full object-cover object-center"
               />
             </div>
@@ -84,7 +84,7 @@ export function Leadership() {
                     <span aria-hidden="true" className="absolute -inset-2 rounded-full border border-ivory/10 transition-colors duration-500 group-hover:border-gold-400/40" />
                     <SmartImage
                       src={member.image}
-                      alt="Representative board portrait — official member photography to be added"
+                      alt={`${member.name}, ${member.role} — SHELIFT Governing Board`}
                       className="h-28 w-28 rounded-full border border-gold-400/30 object-cover object-center"
                     />
                   </span>

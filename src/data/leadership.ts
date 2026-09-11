@@ -40,20 +40,20 @@ export const leadership = {
     {
       id: "board-02",
       name: "Musinguzi Emmanuel",
-      role: "Finance & Accountability",
+      role: "Programmes Officer",
       image: images.board02,
-      short:
-        "Oversees budgets, financial controls, and transparent reporting so every programme delivers real value for money.",
-    },
-    {
-      id: "board-03",
-      name: "Nabukenya Sarah",
-      role: "Community & Programmes",
-      image: images.board03,
       short:
         "Brings community voice into programme design and safeguarding, so health, education, and livelihoods work reaches those most in need.",
     },
+    {
+      id: "board-03",
+      name: "Kembabazi Constance",
+      role: "Finance & Accountability",
+      image: images.board03,
+      short:
+        "Oversees budgets, financial controls, and transparent reporting so every programme delivers real value for money.",
+    },
   ] as const,
   boardNote:
-    "Portraits are representative placeholders. Member names, portfolios, and biographies will be completed from the Strategic Plan 2025–2027 before launch.",
+    "We aim to build an environment for growth and learning, where board members can contribute their expertise to help SHELIFT achieve its mission. The board is committed to transparency, accountability, and continuous improvement in all aspects of governance.",
 } as const;
