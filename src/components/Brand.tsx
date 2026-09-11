@@ -1,4 +1,5 @@
 import { organisation } from "../data/content";
+import { images } from "../data/images";
 
 interface BrandProps {
   /** "light" is used over dark hero imagery. */
@@ -6,7 +7,7 @@ interface BrandProps {
   onClick?: () => void;
 }
 
-/** SHELIFT wordmark — a rising sun over a horizon curve. */
+/** SHELIFT brand — official emblem plus wordmark. */
 export function Brand({ tone = "dark", onClick }: BrandProps) {
   const light = tone === "light";
   return (
@@ -16,20 +17,16 @@ export function Brand({ tone = "dark", onClick }: BrandProps) {
       className="group inline-flex items-center gap-2.5"
       aria-label={`${organisation.name} — back to top`}
     >
-      <svg
-        viewBox="0 0 40 40"
+      <img
+        src={light ? images.logoWhite : images.logo}
+        alt=""
         aria-hidden="true"
-        className={`h-9 w-9 transition-transform duration-500 group-hover:scale-105 ${light ? "text-gold-400" : "text-clay-500"}`}
-      >
-        <path
-          d="M4 34 C 11 6, 29 6, 36 34"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="3.2"
-          strokeLinecap="round"
-        />
-        <circle cx="20" cy="17" r="5.2" fill="currentColor" />
-      </svg>
+        width={44}
+        height={44}
+        loading="eager"
+        decoding="async"
+        className="h-11 w-11 shrink-0 object-contain transition-transform duration-500 group-hover:scale-105"
+      />
       <span
         className={`font-display text-[1.35rem] leading-none tracking-tight ${light ? "text-ivory" : "text-forest-950"}`}
       >

@@ -45,7 +45,7 @@ shelift/
 ├── index.html                     # SEO, Open Graph, JSON-LD, fonts
 ├── public/
 │   ├── images/                    # all imagery (swap in real photos here)
-│   └── favicon.svg, robots.txt, site.webmanifest
+│   └── logo.png, logo-white.png, favicon-*.png, robots.txt, site.webmanifest
 ├── scripts/
 │   ├── generate-placeholders.mjs  # renders brand-palette placeholders w/ sharp
 │   └── fetch-unsplash.mjs         # downloads + optimizes the Unsplash photo set
@@ -97,7 +97,7 @@ Recommended dimensions:
 ## Leadership section
 
 A dark editorial section sits between **2025–2027 Ambition** and
-**Partnerships**, featuring founder **Dorah Nagawa** (named in the Strategic
+**Partnerships**, featuring founder **Dorah Nakagga** (named in the Strategic
 Plan) with portrait + story, followed by the **Governing Board**.
 
 Board member names are not part of the available source of truth, so the three

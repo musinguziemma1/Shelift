@@ -146,7 +146,7 @@ export const about = {
   headline: "Creating pathways for women, girls, and households to thrive.",
   paragraphs: [
     "SHELIFT was established to address the barriers that hold adolescent girls, women, and households back in Uganda — barriers that begin with restricted access to healthcare, education, and economic opportunity.",
-    "Our work is inspired by the lived experiences and vision of our founder, Dorah Nagawa, and shaped by the communities we serve. Everything we do is grounded in what girls, women, and their households tell us they need to thrive.",
+    "Our work is inspired by the lived experiences and vision of our founder, Dorah Nakagga, and shaped by the communities we serve. Everything we do is grounded in what girls, women, and their households tell us they need to thrive.",
   ],
   storyLink: { label: "Our Story", href: "#vision" },
 } as const;

@@ -13,11 +13,13 @@
  *  - og-image:        1200 × 630
  */
 export const images = {
+  logo: "/logo.png",
+  logoWhite: "/logo-white.png",
   hero: "/images/hero.jpg",
   hero02: "/images/hero-02.jpg",
   hero03: "/images/hero-03.jpg",
   hero04: "/images/hero-04.jpeg",
-  hero05: "/images/hero-05.jpg",
+  hero05: "/images/hero-05.jpeg",
   about: "/images/about.jpg",
   health: "/images/health.jpg",
   education: "/images/education.jpg",

@@ -1,7 +1,7 @@
 /**
  * Leadership & governance content.
  *
- * The founder, Dorah Nagawa, is named in the SHELIFT Strategic Plan brief.
+ * The founder, Dorah Nakagga, is named in the SHELIFT Strategic Plan brief.
  * Board member names/portfolios are NOT specified in any available source of
  * truth, so the three board slots use role-based focus titles with short
  * duty descriptions as honest placeholders — replace the name, role, and

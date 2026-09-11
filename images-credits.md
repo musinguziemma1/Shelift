@@ -18,7 +18,7 @@ npm run fetch:photos
 | `hero-02.jpg` | [A woman holding her baby in a healthcare setting](https://unsplash.com/photos/a-woman-holding-a-baby-in-a-hospital-bed-q7PY6bXbmzk) | Unsplash |
 | `hero-03.jpg` | [A woman standing with a group of children](https://unsplash.com/photos/a-woman-standing-in-front-of-a-group-of-children-VC6MGt9ZoBA) | Emmanuel Ikwuegbu |
 | `hero-04.jpeg` | Hand-provided by the SHELIFT team (livelihoods hero slide) | SHELIFT |
-| `hero-05.jpg` | [Woman in an orange blazer](https://unsplash.com/photos/woman-in-orange-blazer-standing-AzVexpHvuKY) | Etty Fidele |
+| `hero-05.jpeg` | [Woman in an orange blazer](https://unsplash.com/photos/woman-in-orange-blazer-standing-AzVexpHvuKY) | Etty Fidele |
 | `about.jpg` | [Woman in a floral dress beside a tree](https://unsplash.com/photos/woman-in-blue-and-yellow-floral-dress-standing-beside-green-leaved-tree-during-daytime-A5an19IyGw0) | Unsplash |
 | `founder.jpg` | Hand-provided by the SHELIFT team (founder portrait) | SHELIFT |
 | `health.jpg` | [A woman clinician with a stethoscope](https://unsplash.com/photos/a-woman-wearing-a-white-coat-and-a-stethoscope-TPT4pevJEmQ) | Unsplash |

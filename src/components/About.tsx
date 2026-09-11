@@ -22,7 +22,7 @@ export function About() {
           <div className="absolute bottom-5 left-5 max-w-[75%] rounded-md bg-forest-950/85 px-5 py-4 backdrop-blur-sm">
             <p className="eyebrow text-gold-400">Established in Uganda</p>
             <p className="mt-1.5 text-sm leading-snug text-ivory/90">
-              Founded from the lived experiences and vision of Dorah Nagawa.
+              Founded from the lived experiences and vision of Dorah Nakagga.
             </p>
           </div>
         </Reveal>

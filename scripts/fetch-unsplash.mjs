@@ -60,7 +60,7 @@ const slots = [
     note: "Hand-provided by the SHELIFT team (livelihoods hero slide) — never auto-fetched.",
   },
   {
-    file: "hero-05.jpg",
+    file: "hero-05.jpeg",
     w: 1920,
     h: 1280,
     id: "photo-1563132337-f159f484226c",
