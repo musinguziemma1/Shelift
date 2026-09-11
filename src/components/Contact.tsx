@@ -4,7 +4,7 @@ import { contact } from "../data/engage";
 import { Reveal } from "./ui/Reveal";
 import { SectionHeading } from "./ui/SectionHeading";
 
-type FormStatus = "idle" | "error" | "validated";
+type FormStatus = "idle" | "error" | "sending" | "sent" | "failed";
 
 interface FormValues {
   name: string;
@@ -54,12 +54,37 @@ export function Contact() {
     return Object.keys(next).length === 0;
   };
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    if (validate()) {
-      setStatus("validated");
-    } else {
+    if (!validate()) {
       setStatus("error");
+      return;
+    }
+
+    setStatus("sending");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: values.name.trim(),
+          email: values.email.trim(),
+          organization: values.organization.trim(),
+          reason: values.reason,
+          message: values.message.trim(),
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => ({}));
+        throw new Error(data.error || "Failed to send message.");
+      }
+
+      setStatus("sent");
+    } catch (err) {
+      console.error("Contact form error:", err);
+      setStatus("failed");
     }
   };
 
@@ -176,7 +201,7 @@ export function Contact() {
           {/* Contact form — light card */}
           <Reveal delay={0.15}>
             <div className="h-full rounded-2xl border border-forest-900/10 bg-white p-6 shadow-[0_24px_55px_-32px_rgba(11,26,18,0.35)] sm:p-8 lg:p-10">
-            {status === "validated" ? (
+            {status === "sent" ? (
               <div
                 role="status"
                 className="flex h-full min-h-80 flex-col items-center justify-center text-center"
@@ -200,10 +225,31 @@ export function Contact() {
                   Thank you, {values.name.split(" ")[0] || "friend"}.
                 </h3>
                 <p className="mt-3 max-w-md text-sm leading-relaxed text-charcoal/70">
-                  Your message has been validated and is ready to send. To
-                  complete delivery, this form needs to be connected to SHELIFT's
-                  email service or backend — in the meantime, you can reach the
-                  team directly at{" "}
+                  Your message has been sent successfully. We'll get back to you
+                  as soon as we can.
+                </p>
+                <button
+                  type="button"
+                  onClick={resetForm}
+                  className="mt-8 text-sm font-bold text-forest-800 underline-offset-4 hover:underline"
+                >
+                  Send another message
+                </button>
+              </div>
+            ) : status === "failed" ? (
+              <div
+                role="alert"
+                className="flex h-full min-h-80 flex-col items-center justify-center text-center"
+              >
+                <span className="grid h-16 w-16 place-items-center rounded-full bg-clay-50 text-clay-600">
+                  <AlertCircle aria-hidden="true" className="h-8 w-8" />
+                </span>
+                <h3 className="mt-6 font-display text-2xl text-forest-950">
+                  Something went wrong.
+                </h3>
+                <p className="mt-3 max-w-md text-sm leading-relaxed text-charcoal/70">
+                  We couldn't send your message right now. Please try again or
+                  reach us directly at{" "}
                   <a
                     href={`mailto:${contact.email}`}
                     className="font-bold text-clay-600 underline-offset-4 hover:underline"
@@ -217,7 +263,7 @@ export function Contact() {
                   onClick={resetForm}
                   className="mt-8 text-sm font-bold text-forest-800 underline-offset-4 hover:underline"
                 >
-                  Send another message
+                  Try again
                 </button>
               </div>
             ) : (
@@ -343,13 +389,41 @@ export function Contact() {
                   <div className="sm:col-span-2 flex flex-wrap items-center gap-4 border-t border-forest-900/10 pt-6">
                     <button
                       type="submit"
-                      className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest-950 px-8 py-3 text-sm font-bold tracking-wide text-ivory transition-colors duration-300 hover:bg-clay-500"
+                      disabled={status === "sending"}
+                      className="group inline-flex min-h-12 items-center justify-center gap-2 rounded-full bg-forest-950 px-8 py-3 text-sm font-bold tracking-wide text-ivory transition-colors duration-300 hover:bg-clay-500 disabled:opacity-60 disabled:hover:bg-forest-950"
                     >
-                      Send Message
-                      <Send
-                        aria-hidden="true"
-                        className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
-                      />
+                      {status === "sending" ? (
+                        <>
+                          <svg
+                            className="h-4 w-4 animate-spin"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                          >
+                            <circle
+                              className="opacity-25"
+                              cx="12"
+                              cy="12"
+                              r="10"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                            />
+                            <path
+                              className="opacity-75"
+                              fill="currentColor"
+                              d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                            />
+                          </svg>
+                          Sending…
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <Send
+                            aria-hidden="true"
+                            className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+                          />
+                        </>
+                      )}
                     </button>
                     <p className="flex items-center gap-2 text-xs text-charcoal/50">
                       <Info className="h-3.5 w-3.5 shrink-0 text-gold-600" aria-hidden="true" />
