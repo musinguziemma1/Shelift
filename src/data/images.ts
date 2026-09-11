@@ -13,7 +13,6 @@
  *  - og-image:        1200 × 630
  */
 export const images = {
-  logo: "/images/logo.svg",
   hero: "/images/hero.jpg",
   hero02: "/images/hero-02.jpg",
   hero03: "/images/hero-03.jpg",
