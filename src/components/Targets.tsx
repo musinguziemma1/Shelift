@@ -1,4 +1,3 @@
-import { Info } from "lucide-react";
 import { targets } from "../data/engage";
 import { Counter } from "./ui/Counter";
 import { Reveal } from "./ui/Reveal";
@@ -36,15 +35,6 @@ export function Targets() {
           ))}
         </div>
 
-        <Reveal delay={0.15} className="mt-14">
-          <p className="flex max-w-2xl items-start gap-3 rounded-sm border border-forest-900/10 bg-sand-50 p-4 text-xs leading-relaxed text-charcoal/60">
-            <Info
-              aria-hidden="true"
-              className="mt-0.5 h-4 w-4 shrink-0 text-gold-600"
-            />
-            {targets.footnote}
-          </p>
-        </Reveal>
       </div>
     </section>
   );
