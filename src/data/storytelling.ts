@@ -86,7 +86,7 @@ export const gallery = {
     },
   ] as const,
   note:
-    "Photography on this page is from Unsplash and is representative — real SHELIFT field photography will replace it via the central image configuration when available.",
+    "Here are the success stories for SHELIFT success of young women",
 } as const;
 
 /* ------------------------------------------------------------------ */
